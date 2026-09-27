@@ -1,0 +1,411 @@
+:root {
+  --ink: #14181f;
+  --muted: #5b6573;
+  --line: #e3e7ed;
+  --accent: #1f4f8f;
+  --accent-dark: #163a6a;
+  --bg: #ffffff;
+  --bg-soft: #f6f8fb;
+  --wrap: 68rem;
+  --radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.6em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+}
+
+h3 {
+  font-size: 1.075rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--accent-dark);
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Header */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.wordmark-name {
+  font-weight: 650;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.wordmark-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* Hero */
+
+.hero {
+  padding: clamp(3.5rem, 9vw, 6rem) 0 clamp(2.5rem, 6vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.lead {
+  max-width: 44rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.65rem 1.3rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 550;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+}
+
+.button-quiet {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.button-quiet:hover {
+  background: var(--bg-soft);
+  border-color: var(--muted);
+  color: var(--ink);
+}
+
+/* Sections */
+
+.section {
+  padding: clamp(2.75rem, 7vw, 4.5rem) 0;
+}
+
+.section-soft {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.prose {
+  max-width: 46rem;
+  color: var(--muted);
+}
+
+/* Cards */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+/* Company facts */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.25rem 2.5rem;
+  margin: 2rem 0 0;
+}
+
+.fact {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.fact dt {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fact dd {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+}
+
+/* Contact */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.contact-item h3 {
+  margin-bottom: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-item p {
+  margin: 0 0 0.35rem;
+}
+
+/* Legal pages */
+
+.page-head {
+  padding: clamp(2.75rem, 7vw, 4rem) 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-head .updated {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.legal {
+  max-width: 46rem;
+  padding: clamp(2rem, 5vw, 3rem) 0 clamp(2.75rem, 7vw, 4.5rem);
+}
+
+.legal h2 {
+  margin-top: 2.25rem;
+  font-size: 1.2rem;
+}
+
+.legal h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal ul {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.legal li {
+  margin-bottom: 0.4rem;
+}
+
+.legal .contact-block {
+  margin-top: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.legal .contact-block p {
+  margin: 0 0 0.25rem;
+}
+
+.legal .contact-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* 404 */
+
+.notfound {
+  padding: clamp(4rem, 12vw, 7rem) 0;
+  text-align: center;
+}
+
+.notfound .lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notfound .hero-actions {
+  justify-content: center;
+}
+
+/* Footer */
+
+.site-footer {
+  padding: clamp(2.5rem, 6vw, 3.5rem) 0 2rem;
+  border-top: 1px solid var(--line);
+  background: var(--bg-soft);
+  font-size: 0.92rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+}
+
+.footer-company {
+  max-width: 34rem;
+}
+
+.footer-company p {
+  margin: 0 0 0.3rem;
+}
+
+.footer-name {
+  font-weight: 600;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.copyright {
+  margin: 2rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+@media (max-width: 34rem) {
+  .footer-nav {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+}
