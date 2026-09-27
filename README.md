@@ -1,6 +1,6 @@
 # zshtech.com
 
-中晟鑫财科技（北京）有限公司官网。纯静态页面，无构建步骤，托管在 Cloudflare Pages。
+中晟鑫财科技（北京）有限公司官网。纯静态页面，无构建步骤，用 `npx wrangler deploy` 部署到 Cloudflare Workers 静态资源。
 
 用途：D-U-N-S 申请，以及 Google Play / App Store 组织账号申请时的企业官网核验。
 
@@ -10,28 +10,29 @@
 index.html        首页（What we do / Company / Contact）
 privacy.html      隐私政策，线上路径 /privacy
 terms.html        服务条款，线上路径 /terms
-404.html          Cloudflare Pages 自动用作 404 页
+404.html          未匹配路径时返回的 404 页
 assets/styles.css 全站样式
 favicon.svg       文字标识（无 Logo，用 ZS 字母块）
 robots.txt        允许收录，指向 sitemap
 sitemap.xml       三个页面
-_headers          Cloudflare Pages 响应头
+_headers          静态资源响应头，Workers 会读取，本身不会被当成页面
+wrangler.jsonc    wrangler deploy 的配置，部署时不会公开
+.assetsignore     排除不该上传的文件
 ```
 
 ## 部署
 
-Cloudflare Pages 连接本仓库后，用以下设置：
+在仓库根目录执行：
 
-| 配置项 | 值 |
-| --- | --- |
-| Framework preset | None |
-| Build command | 留空 |
-| Build output directory | `/` |
-| Production branch | `main` |
+```bash
+npx wrangler deploy
+```
 
-推送到 `main` 即自动发布。自定义域名在 Pages 项目的 Custom domains 里绑定 `zshtech.com`（建议同时绑定 `www.zshtech.com` 并重定向到主域名）。
+首次执行会打开浏览器登录 Cloudflare。不需要 `package.json`，也不需要 Worker 脚本。`wrangler.jsonc` 把当前目录声明为静态资源，`/privacy` 对应 `privacy.html`，找不到的路径返回 `404.html`。
 
-`privacy.html` 与 `terms.html` 在 Pages 上通过 `/privacy`、`/terms` 访问，站内链接和 sitemap 都用这两个无后缀路径。
+若控制台里的 Worker 名称不是 `zsh-tech`，先改 `wrangler.jsonc` 的 `name`，再部署。
+
+自定义域名在 Worker 的 Settings → Domains & Routes 里绑定 `zshtech.com`。建议同时绑定 `www.zshtech.com` 并重定向到主域名。域名绑定不写进配置文件，避免账号或域名还没就绪时部署失败。
 
 ## 本地预览
 

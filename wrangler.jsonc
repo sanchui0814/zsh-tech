@@ -1,0 +1,10 @@
+{
+  // Worker 名称。若 Cloudflare 控制台里的项目名不同，改成同一个名字再部署。
+  "name": "zsh-tech",
+  "compatibility_date": "2026-09-27",
+  "assets": {
+    "directory": ".",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
