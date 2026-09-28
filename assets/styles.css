@@ -244,6 +244,10 @@ a:hover {
   font-size: 0.97rem;
 }
 
+.cards + .prose {
+  margin-top: 2.5rem;
+}
+
 /* Company facts */
 
 .facts {

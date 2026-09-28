@@ -7,7 +7,7 @@
 ## 目录结构
 
 ```
-index.html        首页（What we do / Company / Contact）
+index.html        首页（What we are building / Company / Contact）
 privacy.html      隐私政策，线上路径 /privacy
 terms.html        服务条款，线上路径 /terms
 404.html          未匹配路径时返回的 404 页
@@ -32,7 +32,7 @@ npx wrangler deploy
 
 若控制台里的 Worker 名称不是 `zsh-tech`，先改 `wrangler.jsonc` 的 `name`，再部署。
 
-自定义域名在 Worker 的 Settings → Domains & Routes 里绑定 `zshtech.com`。建议同时绑定 `www.zshtech.com` 并重定向到主域名。域名绑定不写进配置文件，避免账号或域名还没就绪时部署失败。
+自定义域名在 Worker 的 Domains 里手动绑定，不写进配置文件。
 
 ## 本地预览
 
@@ -70,6 +70,6 @@ npx serve .
 
 ## 后续需要改页面的情况
 
-- 游戏上架后：在首页 What we do 里补上应用名称与商店链接。
+- 游戏上架后：在首页 What we are building 里补上应用名称与商店链接。
 - 接入广告 SDK 或内购：`privacy.html` 与 `terms.html` 需要另写一版，说明收集的数据、支付与退款规则，并更新生效日期。
 - 若为 zshtech.com 办理 ICP 备案：在页脚加备案号并链接到 https://beian.miit.gov.cn。
